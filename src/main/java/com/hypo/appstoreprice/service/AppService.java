@@ -319,8 +319,18 @@ public class AppService {
             if (CollUtil.isEmpty(appInfo.getInAppPurchaseList())) {
                 continue;
             }
-            // 先按價格升序排序
+            // 先去重（同名同價視為重複），再按價格升序排序
             List<InAppPurchaseDTO> sortedPurchaseList = appInfo.getInAppPurchaseList().stream()
+                .collect(Collectors.collectingAndThen(
+                    Collectors.toMap(
+                        item -> item.getObject() + "||" + item.getPrice().getPrice().toPlainString(),
+                        item -> item,
+                        (a, b) -> a,
+                        java.util.LinkedHashMap::new
+                    ),
+                    map -> new ArrayList<>(map.values())
+                ))
+                .stream()
                 .sorted(Comparator.comparing(item -> item.getPrice().getHkdPrice()))
                 .toList();
             // 記錄當前地區每個內購項目名稱出現的次數
