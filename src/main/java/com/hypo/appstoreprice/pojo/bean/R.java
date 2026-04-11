@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * 自定义响应
+ * 自訂響應
  *
  * @author hypo
  * @date 2020-11-20 17:27
@@ -26,9 +26,9 @@ public class R {
         SUCCESS(0, "成功"),
 
         /**
-         * 失败
+         * 失敗
          */
-        FAIL(1, "失败");
+        FAIL(1, "失敗");
 
 
         private final Integer code;
@@ -38,17 +38,17 @@ public class R {
     }
 
     /**
-     * 响应状态码
+     * 響應狀態碼
      */
     private Integer code;
 
     /**
-     * 响应消息
+     * 響應訊息
      */
     private String message;
 
     /**
-     * 响应中的数据
+     * 響應中的數據
      */
     private Object data;
 
@@ -75,14 +75,14 @@ public class R {
     }
 
     /**
-     * 1 失败 null
+     * 1 失敗 null
      */
     public static R failed() {
         return new R(Status.FAIL.getCode(), Status.FAIL.getDesc(), null);
     }
 
     /**
-     * 1 失败 msg
+     * 1 失敗 msg
      */
     public static R failed(String msg) {
         return new R(Status.FAIL.getCode(), msg, null);

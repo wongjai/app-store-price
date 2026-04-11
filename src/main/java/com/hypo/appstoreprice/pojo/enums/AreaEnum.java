@@ -18,21 +18,21 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum AreaEnum {
 
-    USA("us", "美国", "$", "USD", StrUtil.COMMA, "In-App Purchases", "en-US"),
+    USA("us", "美國", "$", "USD", StrUtil.COMMA, "In-App Purchases", "en-US"),
 
-    CHINA("cn", "中国", "¥", "CNY", StrUtil.COMMA, "App内购买", "zh-CN"),
+    CHINA("cn", "中國", "¥", "CNY", StrUtil.COMMA, "App内购买", "zh-CN"),
 
-    TAIWAN("tw", "台湾", "NT$", "TWD", StrUtil.COMMA, "App內購買", "zh-TW"),
+    TAIWAN("tw", "台灣", "NT$", "TWD", StrUtil.COMMA, "App內購買", "zh-TW"),
 
     HONGKONG("hk", "香港", "HK$", "HKD", StrUtil.COMMA, "App 內購買", "zh-HK"),
 
     JAPAN("jp", "日本", "¥", "JPY", StrUtil.COMMA, "アプリ内購入", "ja-JP"),
 
-    KOREA("kr", "韩国", "₩", "KRW", StrUtil.COMMA, "앱 내 구입", "ko-KR"),
+    KOREA("kr", "韓國", "₩", "KRW", StrUtil.COMMA, "앱 내 구입", "ko-KR"),
 
     TURKEY("tr", "土耳其", "₺", "TRY", StrUtil.DOT, "In-App Purchases", "tr-TR"),
 
-    NIGERIA("ng", "尼日利亚", "₦", "NGN", StrUtil.COMMA, "In-App Purchases", "en-NG"),
+    NIGERIA("ng", "尼日利亞", "₦", "NGN", StrUtil.COMMA, "In-App Purchases", "en-NG"),
 
     INDIA("in", "印度", "₹", "INR", StrUtil.COMMA, "In-App Purchases", "en-IN"),
 

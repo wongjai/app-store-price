@@ -6,7 +6,7 @@ import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 
 /**
- * 日志记录工具, 格式化输出
+ * 日誌記錄工具, 格式化輸出
  *
  * @author hypo
  * @date 2022-03-05
@@ -19,7 +19,7 @@ public class LogUtil {
     private static final String LOGGER_FORMAT_WITHOUT_PARAMS = "[{}]";
 
     /**
-     * INFO 日志记录
+     * INFO 日誌記錄
      *
      * @param logger logger
      * @param title  title
@@ -36,7 +36,7 @@ public class LogUtil {
     }
 
     /**
-     * ERROR 日志记录
+     * ERROR 日誌記錄
      *
      * @param logger logger
      * @param title  title
@@ -53,7 +53,7 @@ public class LogUtil {
     }
 
     /**
-     * ERROR 日志记录
+     * ERROR 日誌記錄
      *
      * @param logger logger
      * @param title  title
@@ -71,7 +71,7 @@ public class LogUtil {
     }
 
     /**
-     * WARN 日志记录
+     * WARN 日誌記錄
      *
      * @param logger logger
      * @param title  title
@@ -88,7 +88,7 @@ public class LogUtil {
     }
 
     /**
-     * DEBUG 日志记录
+     * DEBUG 日誌記錄
      *
      * @param logger logger
      * @param title  title
@@ -105,8 +105,8 @@ public class LogUtil {
     }
 
     /**
-     * 格式化日志记录信息，奇位参数作为KEY，偶位作为VALUE
-     * 当传入参数不是偶数个时，最后一个参数组的VALUE默认""
+     * 格式化日誌記錄資訊，奇位參數作為 KEY，偶位作為 VALUE
+     * 當傳入參數不是偶數個時，最後一個參數組的 VALUE 預設為 ""
      *
      * @param params params
      * @return String
@@ -120,7 +120,7 @@ public class LogUtil {
             Object key = params[index];
             Object value;
             if (index == params.length - 1) {
-                value = "NULL-日志调用方未传入参数值";
+                value = "NULL-日誌調用方未傳入參數值";
             } else {
                 value = params[index + 1];
             }

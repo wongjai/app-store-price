@@ -49,14 +49,14 @@ public class ExchangeRateUtil {
     }
 
     /**
-     * convert to cny
+     * convert to hkd
      *
      * @param amount       amount
      * @param currencyCode currency code
      * @return {@link BigDecimal }
      */
-    public BigDecimal convertToCny(BigDecimal amount, String currencyCode) {
-        Map<String, BigDecimal> exchangeRateMap = getExchangeRateMap(AreaEnum.CHINA.getCurrencyCode());
+    public BigDecimal convertToHkd(BigDecimal amount, String currencyCode) {
+        Map<String, BigDecimal> exchangeRateMap = getExchangeRateMap(AreaEnum.HONGKONG.getCurrencyCode());
         return NumberUtil.div(amount, exchangeRateMap.get(currencyCode), 2, RoundingMode.HALF_UP);
     }
 

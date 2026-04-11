@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * 统一返回值处理
+ * 統一返回值處理
  *
  * @author hypo
  * @date 2022-01-08

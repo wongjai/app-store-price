@@ -46,12 +46,12 @@ import java.util.stream.Collectors;
 public class AppService {
 
     /**
-     * app 搜索列表缓存
+     * app 搜尋列表快取
      */
     private static final Cache<String, List<GetAppListResDTO>> APP_LIST_CACHE = new TimedCache<>(Duration.ofDays(1L).toMillis(), new ConcurrentHashMap<>());
 
     /**
-     * app 信息缓存
+     * app 資訊快取
      */
     private static final Cache<String, List<GetAppInfoResDTO>> APP_INFO_CACHE = new TimedCache<>(Duration.ofDays(1L).toMillis(), new ConcurrentHashMap<>());
 
@@ -61,7 +61,7 @@ public class AppService {
     private static final ConcurrentHashMap<String, Object> LOCK_POOL = new ConcurrentHashMap<>();
 
     /**
-     * 热门搜索词排行
+     * 熱門搜尋詞排行
      */
     private static final Multiset<String> POPULAR_SEARCH_WORD = HashMultiset.create();
 
@@ -100,21 +100,21 @@ public class AppService {
      * @return {@link List }<{@link GetAppListResDTO }>
      */
     public List<GetAppListResDTO> getAppList(GetAppListReqDTO reqDTO) {
-        // 记录搜索次数
+        // 記錄搜尋次數
         POPULAR_SEARCH_WORD.add(reqDTO.getAppName());
 
-        // 无锁检查缓存
+        // 無鎖檢查快取
         String cacheKey = StrUtil.format("{}-{}", reqDTO.getAreaCode(), reqDTO.getAppName());
         List<GetAppListResDTO> appListCache = APP_LIST_CACHE.get(cacheKey);
         if (CollUtil.isNotEmpty(appListCache)) {
             return appListCache;
         }
 
-        // 获取锁对象（细粒度锁，按 appId 分段）
+        // 獲取鎖對象（細粒度鎖，按 appId 分段）
         Object lock = LOCK_POOL.computeIfAbsent(StrUtil.format("getAppList-{}-{}", reqDTO.getAreaCode(), reqDTO.getAppName()), k -> new Object());
 
         synchronized (lock) {
-            // 锁内再次检查缓存（双重检查）
+            // 鎖內再次檢查快取（雙重檢查）
             appListCache = APP_LIST_CACHE.get(cacheKey);
             if (CollUtil.isNotEmpty(appListCache)) {
                 return appListCache;
@@ -130,7 +130,7 @@ public class AppService {
                 }
                 // 解析 HTML
                 Document doc = Jsoup.parse(response.body());
-                // 构造出参
+                // 構造輸出參數
                 Element scriptElement = doc.selectFirst("#serialized-server-data");
                 if (Objects.isNull(scriptElement)) {
                     log.error("scriptElement is null, areaCode: {}, appName: {}", reqDTO.getAreaCode(), reqDTO.getAppName());
@@ -187,17 +187,17 @@ public class AppService {
      * @return {@link GetAppInfoResDTO }
      */
     public List<GetAppInfoResDTO> getAppInfo(String appId) {
-        // 无锁检查缓存
+        // 無鎖檢查快取
         List<GetAppInfoResDTO> appInfoListCache = APP_INFO_CACHE.get(appId);
         if (CollUtil.isNotEmpty(appInfoListCache)) {
             return appInfoListCache;
         }
 
-        // 获取锁对象（细粒度锁，按 appId 分段）
+        // 獲取鎖對象（細粒度鎖，按 appId 分段）
         Object lock = LOCK_POOL.computeIfAbsent(StrUtil.format("getAppInfo-{}", appId), k -> new Object());
 
         synchronized (lock) {
-            // 锁内再次检查缓存（双重检查）
+            // 鎖內再次檢查快取（雙重檢查）
             appInfoListCache = APP_INFO_CACHE.get(appId);
             if (CollUtil.isNotEmpty(appInfoListCache)) {
                 return appInfoListCache;
@@ -215,7 +215,7 @@ public class AppService {
                 }
                 // 解析 HTML
                 Document doc = Jsoup.parse(response.body());
-                // 构造出参
+                // 構造輸出參數
                 GetAppInfoResDTO resDTO = new GetAppInfoResDTO();
                 resDTO.setAppId(appId);
                 resDTO.setArea(areaEnum.getCode());
@@ -226,16 +226,16 @@ public class AppService {
                     return;
                 }
                 JSONObject jsonResult = JSON.parseObject(scriptElement.html().trim()).getJSONArray("data").getJSONObject(0).getJSONObject("data");
-                // 提取应用名称
+                // 提取應用名稱
                 resDTO.setName(jsonResult.getString("title"));
-                // 提取副标题
+                // 提取副標題
                 resDTO.setSubtitle(jsonResult.getJSONObject("lockup").getString("subtitle"));
-                // 提取开发者信息
+                // 提取開發者資訊
                 resDTO.setDeveloper(jsonResult.getJSONObject("developerAction").getString("title"));
                 resDTO.setAppStoreUrl(appStoreUrl);
-                // 提取价格信息
+                // 提取價格資訊
                 resDTO.setPrice(parsePrice(jsonResult.getJSONObject("lockup").getJSONObject("offerDisplayProperties").getString("priceFormatted"), areaEnum));
-                // 查找所有内购列表项
+                // 查找所有內購列表項
                 JSONArray inAppPurchaseArray = jsonResult.getJSONObject("shelfMapping").getJSONObject("information").getJSONArray("items")
                     .toList(JSONObject.class)
                     .stream()
@@ -245,7 +245,7 @@ public class AppService {
                     .map(item -> item.getJSONObject(0))
                     .map(item -> item.getJSONArray("textPairs"))
                     .orElse(new JSONArray());
-                // 存储解析结果
+                // 儲存解析結果
                 List<InAppPurchaseDTO> inAppPurchaseList = new ArrayList<>();
                 for (int i = 0; i < inAppPurchaseArray.size(); i++) {
                     JSONArray jsonArray = inAppPurchaseArray.getJSONArray(i);
@@ -257,14 +257,14 @@ public class AppService {
                 resDTO.setInAppPurchaseList(inAppPurchaseList);
                 resultList.get().add(resDTO);
             });
-            // 有售价的应用，按价格升序，有内购的应用，按内购价格升序
+            // 有售價的應用按價格升序，有內購的應用按內購價格升序
             resultList.set(resultList.get().stream()
-                .sorted(Comparator.comparing(item -> item.getPrice().getCnyPrice()))
+                .sorted(Comparator.comparing(item -> item.getPrice().getHkdPrice()))
                 .sorted(Comparator.comparing(
                     item -> item.getInAppPurchaseList().stream()
-                        .min(Comparator.comparing(ele -> ele.getPrice().getCnyPrice()))
+                        .min(Comparator.comparing(ele -> ele.getPrice().getHkdPrice()))
                         .orElse(InAppPurchaseDTO.none())
-                        .getPrice().getCnyPrice()))
+                        .getPrice().getHkdPrice()))
                 .collect(Collectors.toList()));
             APP_INFO_CACHE.put(appId, resultList.get());
         }
@@ -302,47 +302,47 @@ public class AppService {
             return new ArrayList<>();
         }
 
-        // 用于存储比较结果，key 为购买项目名称
+        // 用於儲存比較結果，key 為購買項目名稱
         Map<String, List<Money>> comparisonMap = new LinkedHashMap<>();
 
-        // 收集各地区的 App 本体价格
+        // 收集各地區的 App 本體價格
         List<Money> appPriceList = appInfoList.stream()
             .map(GetAppInfoResDTO::getPrice)
             .collect(Collectors.toList());
         if (CollUtil.isNotEmpty(appPriceList)) {
-            comparisonMap.put("软件本体", appPriceList);
+            comparisonMap.put("軟件本體", appPriceList);
         }
 
-        // 收集各地区的内购价格，按内购项目名称分组
-        // 同一地区可能存在相同名称的内购项目，先按价格升序排序后再编序号区分
+        // 收集各地區的內購價格，按內購項目名稱分組
+        // 同一地區可能存在相同名稱的內購項目，先按價格升序排序後再編序號區分
         for (GetAppInfoResDTO appInfo : appInfoList) {
             if (CollUtil.isEmpty(appInfo.getInAppPurchaseList())) {
                 continue;
             }
-            // 先按价格升序排序
+            // 先按價格升序排序
             List<InAppPurchaseDTO> sortedPurchaseList = appInfo.getInAppPurchaseList().stream()
-                .sorted(Comparator.comparing(item -> item.getPrice().getCnyPrice()))
+                .sorted(Comparator.comparing(item -> item.getPrice().getHkdPrice()))
                 .toList();
-            // 记录当前地区每个内购项目名称出现的次数
+            // 記錄當前地區每個內購項目名稱出現的次數
             Map<String, Integer> objectCountMap = new HashMap<>();
             for (InAppPurchaseDTO purchase : sortedPurchaseList) {
                 String objectName = purchase.getObject();
                 int count = objectCountMap.getOrDefault(objectName, 0) + 1;
                 objectCountMap.put(objectName, count);
-                // 如果同名项目出现多次，使用 "名称 #序号" 的格式区分
+                // 如果同名項目出現多次，使用「名稱 #序號」格式區分
                 String key = count > 1 ? StrUtil.format("{} #{}", objectName, count) : objectName;
                 comparisonMap.computeIfAbsent(key, k -> new ArrayList<>()).add(purchase.getPrice());
             }
         }
 
-        // 对每个内购项目的价格列表按人民币价格升序排序，并构建结果
-        // 最终按价格列表数量降序排序（更多地区有售的项目排在前面）
+        // 對每個內購項目的價格列表按港幣價格升序排序，並構建結果
+        // 最終按價格列表數量降序排序（更多地區有售的項目排在前面）
         return comparisonMap.entrySet().stream()
             .map(entry -> {
                 GetAppInfoComparisonResDTO resDTO = new GetAppInfoComparisonResDTO();
                 resDTO.setObject(entry.getKey());
                 resDTO.setPriceList(entry.getValue().stream()
-                    .sorted(Comparator.comparing(Money::getCnyPrice))
+                    .sorted(Comparator.comparing(Money::getHkdPrice))
                     .collect(Collectors.toList()));
                 return resDTO;
             })

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.io.IOException;
 
 /**
- * 统一异常处理
+ * 統一異常處理
  *
  * @author hypo
  * @date 2022-01-08
@@ -24,7 +24,7 @@ import java.io.IOException;
 public class CommonExceptionHandler {
 
     /**
-     * 自定义服务异常
+     * 自訂服務異常
      *
      * @param e e
      * @return {@link R}
@@ -35,7 +35,7 @@ public class CommonExceptionHandler {
     }
 
     /**
-     * 校验不通过异常处理
+     * 校驗未通過異常處理
      *
      * @param e e
      * @return {@link R}
@@ -46,23 +46,23 @@ public class CommonExceptionHandler {
         if (CollUtil.isNotEmpty(result.getAllErrors())) {
             return R.failed(result.getAllErrors().get(0).getDefaultMessage());
         }
-        return R.failed("参数不正确");
+        return R.failed("參數不正確");
     }
 
     /**
-     * 系统异常
+     * 系統異常
      *
      * @param e e
      * @return {@link R}
      */
     @ExceptionHandler(value = Exception.class)
     public R exceptionHandler(Exception e) {
-        LogUtil.error(log, "系统异常", e);
-        return R.failed("系统异常");
+        LogUtil.error(log, "系統異常", e);
+        return R.failed("系統異常");
     }
 
     /**
-     * 客户端终止异常
+     * 客戶端終止異常
      *
      * @param e e
      */
@@ -70,7 +70,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler(value = ClientAbortException.class)
     public void clientAbortExceptionHandler(ClientAbortException e) {
         if (e.getCause().getClass().equals(IOException.class)) {
-            // 写操作IO异常几乎总是由于客户端主动关闭连接导致，忽略
+            // 寫操作 IO 異常幾乎總是由於客戶端主動關閉連接導致，忽略
         } else {
             LogUtil.error(log, "ClientAbortException", e);
         }

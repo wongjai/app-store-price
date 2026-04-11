@@ -50,9 +50,9 @@ public class Money {
     private BigDecimal price;
 
     /**
-     * cny price
+     * hkd price
      */
-    private BigDecimal cnyPrice;
+    private BigDecimal hkdPrice;
 
     /**
      * money
@@ -68,7 +68,7 @@ public class Money {
         this.currencyCode = currencyCode;
         this.locale = areaEnum.getLocale();
         this.price = price;
-        this.cnyPrice = ExchangeRateUtil.convertToCny(price, currencyCode);
+        this.hkdPrice = ExchangeRateUtil.convertToHkd(price, currencyCode);
     }
 
 }

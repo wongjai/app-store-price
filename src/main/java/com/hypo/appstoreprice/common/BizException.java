@@ -3,7 +3,7 @@ package com.hypo.appstoreprice.common;
 import cn.hutool.core.util.StrUtil;
 
 /**
- * 业务异常
+ * 業務異常
  *
  * @author hypo
  * @date 2022-01-08

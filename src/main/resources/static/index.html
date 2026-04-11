@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-HK">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="免费查询 App Store 应用价格，支持各地区价格对比、内购项目查询、汇率换算。查看 iOS 应用在美区、日区、港区等不同国家的定价差异，帮你找到最优惠的购买地区。">
+        content="免費查詢 App Store 應用價格，支援各地區價格對比、內購項目查詢、匯率換算。查看 iOS 應用在美區、日區、港區等不同國家的定價差異，幫你搵到最優惠的購買地區。">
     <meta name="keywords"
-        content="App Store 价格查询，App Store 价格监控，App Store 价格对比，苹果应用价格对比，iOS 应用价格，App 内购价格，美区 App 价格，日区 App 价格，港区 App 价格，应用商店价格，全球 App 定价，应用价格换算，苹果商店价格，iPhone 应用价格，iPad 应用价格，Mac 应用价格，应用跨区价格，App 价格差异，Apple Store 价格，iOS 应用内购，应用价格转换，苹果应用商店，App 全球定价，应用价格比较工具，苹果 App 价格">
+        content="App Store 價格查詢，App Store 價格監控，App Store 價格對比，蘋果應用價格對比，iOS 應用價格，App 內購價格，美區 App 價格，日區 App 價格，港區 App 價格，應用商店價格，全球 App 定價，應用價格換算，蘋果商店價格，iPhone 應用價格，iPad 應用價格，Mac 應用價格，應用跨區價格，App 價格差異，Apple Store 價格，iOS 應用內購，應用價格轉換，蘋果應用商店，App 全球定價，應用價格比較工具，蘋果 App 價格">
     <meta name="robots" content="index, follow">
     <meta name="author" content="App Store Price">
-    <meta name="language" content="zh-CN">
+    <meta name="language" content="zh-HK">
     <link rel="canonical" href="https://app.vbr.me">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://app.vbr.me">
-    <meta property="og:title" content="App Store 价格查询">
-    <meta property="og:description" content="免费查询 App Store 应用在各地区的价格，支持内购项目对比和汇率换算">
+    <meta property="og:title" content="App Store 價格查詢">
+    <meta property="og:description" content="免費查詢 App Store 應用在各地區的價格，支援內購項目對比和匯率換算">
     <meta property="og:image" content="https://app.vbr.me/image.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://app.vbr.me">
-    <meta property="twitter:title" content="App Store 价格查询">
-    <meta property="twitter:description" content="免费查询 App Store 应用在各地区的价格，支持内购项目对比和汇率换算">
+    <meta property="twitter:title" content="App Store 價格查詢">
+    <meta property="twitter:description" content="免費查詢 App Store 應用在各地區的價格，支援內購項目對比和匯率換算">
     <meta property="twitter:image" content="https://app.vbr.me/image.png">
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <title>App Store 价格查询</title>
+    <title>App Store 價格查詢</title>
 
     <link rel="stylesheet" href="https://fonts.font.im/css2?family=Inter:wght@400;500;600;700&display=swap" />
 
@@ -78,7 +78,7 @@
             color: #1C1C1E;
             -webkit-font-smoothing: antialiased;
             overflow-y: scroll;
-            /* 强制显示滚动条，防止页面抖动 */
+            /* 強制顯示滾動條，防止頁面抖動 */
         }
 
         .dark body {
@@ -86,7 +86,7 @@
             color: #F2F2F7;
         }
 
-        /* iOS 风格模糊背景 */
+        /* iOS 風格模糊背景 */
         .glass-nav {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
@@ -99,13 +99,13 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* iOS 图标圆角 (Squircle 近似) */
+        /* iOS 圖標圓角 (Squircle 近似) */
         .app-icon {
             border-radius: 22%;
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
         }
 
-        /* 隐藏滚动条但保留功能 */
+        /* 隱藏滾動條但保留功能 */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -116,12 +116,12 @@
             display: none;
         }
 
-        /* 自定义滚动条 styling (Tailwind CDN 不包含插件，需手动添加) */
+        /* 自訂滾動條 styling (Tailwind CDN 不包含外掛，需手動添加) */
         .custom-scrollbar::-webkit-scrollbar {
             height: 6px;
-            /* 水平滚动条高度 */
+            /* 水平滾動條高度 */
             width: 6px;
-            /* 垂直滚动条宽度 */
+            /* 垂直滾動條寬度 */
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
@@ -149,7 +149,7 @@
             /* zinc-600 */
         }
 
-        /* 动画 */
+        /* 動畫 */
         .fade-enter-active,
         .fade-leave-active {
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -161,7 +161,7 @@
             transform: translateY(10px);
         }
 
-        /* 自定义 Loading 动画 (替代 DaisyUI) */
+        /* 自訂 Loading 動畫 (替代 DaisyUI) */
         .spinner {
             animation: spin 1s linear infinite;
             border-radius: 9999px;
@@ -172,7 +172,7 @@
             border-left-color: transparent;
         }
 
-        /* 提升暗色模式质感：添加极细的内发光 */
+        /* 提升暗色模式質感：添加極細的內發光 */
         .dark .shadow-ios {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
         }
@@ -206,7 +206,7 @@
 
 <body class="min-h-screen flex flex-col dark:bg-[#1C1C1E] dark:text-gray-100" x-data="appStore()" x-cloak>
 
-    <!-- 顶部导航 -->
+    <!-- 頂部導航 -->
     <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300"
         :class="{'shadow-sm': window.scrollY > 10}">
         <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
@@ -215,7 +215,7 @@
                 <span class="font-semibold text-slate-900 dark:text-white tracking-tight">App Store Price</span>
             </div>
             <div class="flex items-center gap-3">
-                <!-- 颜色模式切换 -->
+                <!-- 顏色模式切換 -->
                 <div class="relative flex items-center" x-data="{ open: false }">
                     <button @click="open = !open"
                         class="w-5 h-5 text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">
@@ -244,7 +244,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            跟随系统
+                            跟隨系統
                         </button>
                         <button @click="setColorMode('light'); open = false"
                             class="w-full px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-zinc-700 flex items-center gap-2"
@@ -253,7 +253,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                             </svg>
-                            浅色模式
+                            淺色模式
                         </button>
                         <button @click="setColorMode('dark'); open = false"
                             class="w-full px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-zinc-700 flex items-center gap-2"
@@ -266,7 +266,7 @@
                         </button>
                     </div>
                 </div>
-                <a href="https://github.com/hypooo/app-store-price" target="_blank"
+                <a href="https://github.com/wongjai/app-store-price" target="_blank"
                     class="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path
@@ -280,21 +280,21 @@
     <main class="flex-grow pt-24 pb-12 px-4">
         <div class="max-w-3xl mx-auto">
 
-            <!-- 标题区域 -->
+            <!-- 標題區域 -->
             <div class="text-center mb-10">
                 <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">
-                    探索全球应用定价
+                    探索全球應用定價
                 </h1>
                 <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base">
-                    对比 App Store 各区价格与内购项目
+                    對比 App Store 各區價格與內購項目
                 </p>
             </div>
 
-            <!-- 搜索栏 -->
+            <!-- 搜尋欄 -->
             <div
                 class="bg-white dark:bg-zinc-800 rounded-2xl shadow-ios p-2 mb-8 relative z-20 transition-all duration-300 hover:shadow-ios-hover">
                 <div class="flex flex-col md:flex-row gap-2">
-                    <!-- 地区选择 -->
+                    <!-- 地區選擇 -->
                     <div class="relative md:w-40 flex-shrink-0">
                         <div
                             class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-10 flex items-center">
@@ -315,7 +315,7 @@
                         </div>
                     </div>
 
-                    <!-- 输入框 -->
+                    <!-- 輸入框 -->
                     <div class="relative flex-grow">
                         <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -325,11 +325,11 @@
                         </div>
                         <input type="text" x-ref="searchInput" x-model="appName"
                             @keyup.enter="loading ? null : searchAppList" @focus="onSearchInputFocus"
-                            @blur="onSearchInputBlur" placeholder="搜索应用、游戏..." maxlength="20"
+                            @blur="onSearchInputBlur" placeholder="搜尋應用、遊戲..." maxlength="20"
                             class="w-full h-12 pl-11 pr-10 bg-slate-50 dark:bg-zinc-700 rounded-xl text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white dark:focus:bg-zinc-600 transition-all"
                             :class="{'ring-2 ring-red-100 bg-red-50': errorAppList}">
 
-                        <!-- 清除按钮 -->
+                        <!-- 清除按鈕 -->
                         <button x-show="appName" @click="appName = ''; $refs.searchInput.focus()"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-500 p-1">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -339,11 +339,11 @@
                             </svg>
                         </button>
 
-                        <!-- 热门搜索下拉 -->
+                        <!-- 熱門搜尋下拉 -->
                         <div x-show="showPopularWords && popularWords.length > 0" x-transition.opacity.duration.200ms
                             class="absolute top-full left-0 right-0 mt-2 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-xl rounded-xl shadow-xl border border-slate-100/50 dark:border-zinc-700/50 p-3 z-30"
                             @mousedown.prevent>
-                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-1">热门搜索
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-1">熱門搜尋
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 <template x-for="word in popularWords" :key="word">
@@ -356,16 +356,16 @@
                         </div>
                     </div>
 
-                    <!-- 搜索按钮 -->
+                    <!-- 搜尋按鈕 -->
                     <button @click="searchAppList"
                         class="h-12 px-6 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2 min-w-[100px]"
                         :disabled="loadingAppList || loading">
-                        <span x-show="!loadingAppList">搜索</span>
+                        <span x-show="!loadingAppList">搜尋</span>
                         <span x-show="loadingAppList" class="spinner spinner-xs"></span>
                     </button>
                 </div>
 
-                <!-- 错误提示 -->
+                <!-- 錯誤提示 -->
                 <div x-show="errorAppList" x-transition class="mt-2 px-2 text-xs text-red-500 flex items-center gap-1">
                     <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
@@ -376,13 +376,13 @@
                 </div>
             </div>
 
-            <!-- 搜索结果列表 -->
+            <!-- 搜尋結果列表 -->
             <div x-show="appList.length > 0 && !loadingAppList" x-transition class="mb-10">
                 <div class="flex justify-between items-end mb-4 px-1">
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white">搜索结果</h2>
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white">搜尋結果</h2>
                     <button @click="appListCollapsed = !appListCollapsed"
                         class="text-xs text-blue-600 font-medium hover:text-blue-700 flex items-center gap-1">
-                        <span x-text="appListCollapsed ? '展开全部' : '收起'"></span>
+                        <span x-text="appListCollapsed ? '展開全部' : '收起'"></span>
                         <svg class="w-3 h-3 transition-transform" :class="{'rotate-180': !appListCollapsed}" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
@@ -401,7 +401,7 @@
                                 <h3 class="font-semibold text-slate-900 dark:text-white text-sm truncate"
                                     x-text="app.appName"></h3>
                                 <p class="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5"
-                                    x-text="app.appDesc || '应用'"></p>
+                                    x-text="app.appDesc || '應用'"></p>
                             </div>
                             <div class="flex-shrink-0">
                                 <button
@@ -418,21 +418,21 @@
 
                 <div x-show="appListCollapsed" @click="appListCollapsed = false"
                     class="bg-white/50 dark:bg-zinc-800/50 border border-dashed border-slate-300 dark:border-zinc-600 rounded-xl p-3 text-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer hover:bg-white dark:hover:bg-zinc-800 hover:border-blue-300 hover:text-blue-600 transition-all">
-                    已折叠搜索结果，点击查看
+                    已摺疊搜尋結果，點擊查看
                 </div>
             </div>
 
-            <!-- 加载详情中 -->
+            <!-- 加載詳情中 -->
             <div x-show="loading" class="py-20 text-center flex flex-col items-center">
                 <div class="spinner spinner-lg text-blue-600 mb-4"></div>
-                <p class="text-slate-400 text-sm font-medium animate-pulse">正在获取全球定价数据...</p>
+                <p class="text-slate-400 text-sm font-medium animate-pulse">正在獲取全球定價數據...</p>
             </div>
 
-            <!-- 详情结果 -->
+            <!-- 詳情結果 -->
             <div x-show="(results.length > 0 || comparisonResults.length > 0) && !loading && appListCollapsed"
                 x-transition class="space-y-6">
 
-                <!-- 标签页切换 -->
+                <!-- 標籤頁切換 -->
                 <div class="flex justify-center mb-2">
                     <div class="bg-slate-100 dark:bg-zinc-700/50 p-1.5 rounded-xl inline-flex shadow-inner">
                         <button @click="currentTab = 'comparison'"
@@ -443,7 +443,7 @@
                                     d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
                                 </path>
                             </svg>
-                            全球比价
+                            全球比價
                         </button>
                         <button @click="currentTab = 'list'"
                             :class="currentTab === 'list' ? 'bg-white dark:bg-zinc-600 shadow text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'"
@@ -452,14 +452,14 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                             </svg>
-                            分地区详情
+                            分地區詳情
                         </button>
                     </div>
                 </div>
 
-                <!-- 全球比价视图 -->
+                <!-- 全球比價視圖 -->
                 <div x-show="currentTab === 'comparison'" class="animate-fade-in space-y-6">
-                    <!-- 应用头部卡片 -->
+                    <!-- 應用頭部卡片 -->
                     <div
                         class="bg-white dark:bg-zinc-800 rounded-3xl shadow-ios p-6 border border-slate-100/50 dark:border-white/5 relative overflow-hidden">
 
@@ -491,11 +491,11 @@
                         </div>
                     </div>
 
-                    <!-- 比价区域 -->
+                    <!-- 比價區域 -->
                     <div x-show="comparisonResults.length > 0"
                         class="bg-white dark:bg-zinc-800 rounded-3xl shadow-ios border border-slate-100/50 dark:border-white/5 overflow-hidden flex flex-col">
 
-                        <!-- 顶部项目标签栏 -->
+                        <!-- 頂部項目標籤欄 -->
                         <div class="border-b border-slate-100 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/30">
                             <div class="flex overflow-x-auto p-2 gap-2 snap-x custom-scrollbar pb-3">
                                 <template x-for="(item, index) in comparisonResults" :key="index">
@@ -508,7 +508,7 @@
                             </div>
                         </div>
 
-                        <!-- 价格列表 -->
+                        <!-- 價格列表 -->
                         <div class="p-4 sm:p-6 min-h-[300px]">
                             <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                                 <span
@@ -523,7 +523,7 @@
                                     :key="price.area">
                                     <div
                                         class="bg-slate-50 dark:bg-zinc-700/30 rounded-2xl p-3 border border-slate-100 dark:border-zinc-700/50 hover:border-blue-200 dark:hover:border-blue-800/50 transition-colors group relative">
-                                        <!-- 最低价徽章 -->
+                                        <!-- 最低價徽章 -->
                                         <div x-show="index === 0 && price.price > 0"
                                             class="absolute -top-1.5 -right-1.5 z-10">
                                             <span
@@ -537,10 +537,10 @@
                                         </div>
                                         <div class="font-bold text-base truncate"
                                             :class="{'text-green-600 dark:text-green-400': price.price === 0, 'text-yellow-600 dark:text-yellow-500': index === 0 && price.price > 0, 'text-slate-900 dark:text-white': price.price > 0 && index > 0}"
-                                            :title="price.price === 0 ? '免费' : ('¥ ' + formatPrice(price.cnyPrice, 'zh-CN'))">
+                                            :title="price.price === 0 ? '免費' : ('HK$ ' + formatPrice(price.hkdPrice, 'zh-HK'))">
                                             <span x-show="price.price > 0" class="text-xs font-normal opacity-70 mr-0.5"
-                                                :class="{'text-yellow-600 dark:text-yellow-500': index === 0}">¥</span>
-                                            <span x-text="formatPrice(price.cnyPrice, 'zh-CN')"></span>
+                                                :class="{'text-yellow-600 dark:text-yellow-500': index === 0}">HK$</span>
+                                            <span x-text="formatPrice(price.hkdPrice, 'zh-HK')"></span>
                                         </div>
                                         <div x-show="price.price > 0"
                                             class="text-xs text-slate-400 font-medium mt-0.5 whitespace-nowrap overflow-hidden">
@@ -557,12 +557,12 @@
                     </div>
                 </div>
 
-                <!-- 分地区详情列表 (原内容) -->
+                <!-- 分地區詳情列表 (原內容) -->
                 <div x-show="currentTab === 'list'" class="space-y-6">
                     <template x-for="app in results" :key="app.area">
                         <div
                             class="bg-white dark:bg-zinc-800/80 rounded-3xl shadow-ios overflow-hidden border border-slate-100/50 dark:border-white/5">
-                            <!-- 头部信息 -->
+                            <!-- 頭部資訊 -->
                             <div class="p-6 pb-4 flex flex-col sm:flex-row gap-5">
                                 <div class="relative flex-shrink-0 mx-auto sm:mx-0 w-24 h-24">
                                     <img :src="selectedAppImage"
@@ -596,41 +596,41 @@
                                         </a>
                                     </div>
 
-                                    <!-- 价格按钮 -->
+                                    <!-- 價格按鈕 -->
                                     <div class="flex items-center justify-center sm:justify-start gap-3">
                                         <div
                                             class="inline-flex items-center bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-4 py-1.5 rounded-full font-bold text-sm">
                                             <span x-text="app.price.currency" class="mr-1 text-xs opacity-70"></span>
                                             <span
-                                                x-text="app.price.price === 0 ? '免费' : formatPrice(app.price.price, app.price.locale)"></span>
+                                                x-text="app.price.price === 0 ? '免費' : formatPrice(app.price.price, app.price.locale)"></span>
                                         </div>
-                                        <div x-show="app.price.price > 0 && app.price.cnyPrice > 0"
+                                        <div x-show="app.price.price > 0 && app.price.hkdPrice > 0"
                                             class="text-xs text-slate-400 font-medium">
-                                            ≈ ¥<span x-text="formatPrice(app.price.cnyPrice, 'zh-CN')"></span>
+                                            ≈ HK$<span x-text="formatPrice(app.price.hkdPrice, 'zh-HK')"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 内购列表 -->
+                            <!-- 內購列表 -->
                             <div
                                 class="border-t border-slate-100 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/50 p-5">
                                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 px-1">App
-                                    内购买项目
+                                    內購買項目
                                 </h3>
 
                                 <div x-show="app.inAppPurchaseList.length === 0"
                                     class="text-center py-6 text-slate-400 text-sm">
-                                    无内购项目
+                                    無內購項目
                                 </div>
 
                                 <div x-show="app.inAppPurchaseList.length > 0"
                                     class="bg-white dark:bg-zinc-800 rounded-xl border border-slate-200 dark:border-zinc-700 overflow-hidden shadow-sm">
                                     <div
                                         class="flex bg-slate-50/80 dark:bg-zinc-700/50 px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-zinc-700">
-                                        <div class="flex-grow">项目名称</div>
-                                        <div class="w-32 text-right">价格</div>
-                                        <div class="w-32 text-right">约合人民币</div>
+                                        <div class="flex-grow">項目名稱</div>
+                                        <div class="w-32 text-right">價格</div>
+                                        <div class="w-32 text-right">約合港幣</div>
                                     </div>
                                     <template x-for="(purchase, index) in app.inAppPurchaseList" :key="index">
                                         <div
@@ -642,11 +642,11 @@
                                             <div
                                                 class="w-32 text-right flex-shrink-0 text-xs text-slate-500 dark:text-slate-400 font-medium overflow-hidden">
                                                 <div class="truncate"
-                                                    :title="purchase.price.price === 0 ? '免费' : ((purchase.price.currency || '') + ' ' + formatPrice(purchase.price.price, purchase.price.locale))">
+                                                    :title="purchase.price.price === 0 ? '免費' : ((purchase.price.currency || '') + ' ' + formatPrice(purchase.price.price, purchase.price.locale))">
                                                     <div
                                                         :class="{'text-green-600 dark:text-green-400 font-bold': purchase.price.price === 0, 'text-xs font-medium text-slate-500 dark:text-slate-400': purchase.price.price !== 0}">
                                                         <template x-if="purchase.price.price === 0">
-                                                            <span>免费</span>
+                                                            <span>免費</span>
                                                         </template>
                                                         <template x-if="purchase.price.price !== 0">
                                                             <span>
@@ -662,8 +662,8 @@
                                             <div class="w-32 text-right flex-shrink-0">
                                                 <div x-show="purchase.price.price > 0">
                                                     <span
-                                                        class="text-xs font-normal text-slate-400 opacity-70 mr-0.5">¥</span>
-                                                    <span x-text="formatPrice(purchase.price.cnyPrice, 'zh-CN')"
+                                                        class="text-xs font-normal text-slate-400 opacity-70 mr-0.5">HK$</span>
+                                                    <span x-text="formatPrice(purchase.price.hkdPrice, 'zh-HK')"
                                                         class="text-sm font-bold text-slate-900 dark:text-white"></span>
                                                 </div>
                                             </div>
@@ -676,7 +676,7 @@
                 </div>
             </div>
 
-            <!-- 空状态引导 -->
+            <!-- 空狀態引導 -->
             <div x-show="!loading && results.length === 0 && !error && !searched && appList.length === 0"
                 class="text-center py-20 opacity-40">
                 <svg class="w-16 h-16 mx-auto text-slate-300 mb-4" fill="none" stroke="currentColor"
@@ -684,12 +684,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
-                <p class="text-slate-500">输入应用名称，开始探索全球价格</p>
+                <p class="text-slate-500">輸入應用名稱，開始探索全球價格</p>
             </div>
 
         </div>
 
-        <!-- 回到顶部按钮 -->
+        <!-- 回到頂部按鈕 -->
         <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" x-data="{ show: false }"
             x-init="window.addEventListener('scroll', () => show = window.scrollY > 600)" x-show="show" x-transition
             class="fixed bottom-8 right-4 md:right-[calc(50%-384px-4rem)] w-10 h-10 bg-white dark:bg-zinc-800 rounded-full shadow-lg border border-slate-200 dark:border-zinc-700 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:shadow-xl transition-all z-50">
@@ -703,14 +703,14 @@
         <p>&copy; <span x-text="new Date().getFullYear()"></span> App Store Price. Designed for Global Discovery.</p>
     </footer>
 
-    <!-- 逻辑脚本 (保持原有逻辑不变) -->
+    <!-- 邏輯腳本 (保持原有邏輯不變) -->
     <script>
         function appStore() {
             return {
-                // 状态变量
+                // 狀態變量
                 appName: 'ChatGPT',
                 areaCode: 'us',
-                areaList: [{ code: 'us', name: '美国' }],
+                areaList: [{ code: 'us', name: '美國' }],
                 areaListError: '',
                 areaListLoading: false,
 
@@ -736,19 +736,19 @@
                 currentTab: 'comparison', // comparison, list
 
 
-                // 颜色模式
+                // 顏色模式
                 colorMode: localStorage.getItem('colorMode') || 'system',
 
-                // 当前选中的应用信息（基于地区）
+                // 當前選中的應用資訊（基於地區）
                 get currentApp() {
                     if (!this.results || this.results.length === 0) return {};
                     const app = this.results.find(r => r.area.toLowerCase() === this.areaCode.toLowerCase());
                     return app || this.results[0] || {};
                 },
 
-                // 价格格式化工具
+                // 價格格式化工具
                 formatPrice(price, locale = 'en-US') {
-                    if (price === 0) return '免费';
+                    if (price === 0) return '免費';
                     return Number(price).toLocaleString(locale, {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
@@ -777,9 +777,9 @@
                     document.documentElement.classList.toggle('dark', isDark);
                 },
 
-                // 搜索应用列表
+                // 搜尋應用列表
                 async searchAppList() {
-                    // 先让输入框失去焦点，再关闭热门搜索
+                    // 先讓輸入框失去焦點，再關閉熱門搜尋
                     this.$refs.searchInput?.blur();
                     this.showPopularWords = false;
                     if (this.blurTimeout) {
@@ -788,12 +788,12 @@
                     }
 
                     if (!this.appName.trim()) {
-                        this.errorAppList = '请输入应用名称';
+                        this.errorAppList = '請輸入應用名稱';
                         return;
                     }
 
                     if (this.appName.trim().length > 20) {
-                        this.errorAppList = '应用名称长度不能超过20个字符';
+                        this.errorAppList = '應用名稱長度不能超過20個字符';
                         return;
                     }
 
@@ -816,19 +816,19 @@
                         if (response.data.code === 0) {
                             this.appList = response.data.data || [];
                             if (this.appList.length === 0) {
-                                this.errorAppList = '未找到相关应用，请尝试更换关键词或地区';
+                                this.errorAppList = '未搵到相關應用，請嘗試更換關鍵詞或地區';
                             }
                         } else {
-                            this.errorAppList = response.data.message || '搜索失败';
+                            this.errorAppList = response.data.message || '搜尋失敗';
                         }
                     } catch (err) {
-                        this.errorAppList = '网络请求失败，请稍后重试';
+                        this.errorAppList = '網絡請求失敗，請稍後重試';
                     } finally {
                         this.loadingAppList = false;
                     }
                 },
 
-                // 选择应用
+                // 選擇應用
                 async selectApp(app) {
                     this.appId = app.appId;
                     this.selectedAppImage = app.appImage;
@@ -839,13 +839,13 @@
                     this.appListCollapsed = true;
                     this.currentTab = 'comparison'; // Default to comparison
 
-                    // 滚动到顶部
+                    // 滾動到頂部
                     window.scrollTo({ top: 0, behavior: 'smooth' });
 
                     await this.searchApp();
                 },
 
-                // 查询应用详情
+                // 查詢應用詳情
                 async searchApp() {
                     if (!this.appId) return;
 
@@ -862,18 +862,18 @@
                     try {
                         const reqBody = { appId: cleanAppId };
 
-                        // 1. 先获取详情
+                        // 1. 先獲取詳情
                         const infoRes = await axios.post('/app/getAppInfo', reqBody);
 
                         if (infoRes.data.code === 0) {
                             this.results = infoRes.data.data || [];
 
                             if (this.results.length === 0) {
-                                this.error = '未找到该应用的详细信息';
-                                return; // 没详情就不查比价了
+                                this.error = '未搵到該應用嘅詳細資訊';
+                                return; // 沒詳情就不查比價了
                             }
 
-                            // 2. 详情成功后再获取比价
+                            // 2. 詳情成功後再獲取比價
                             try {
                                 const comparisonRes = await axios.post('/app/getAppInfoComparison', reqBody);
                                 if (comparisonRes.data.code === 0) {
@@ -881,23 +881,23 @@
                                     this.selectedComparisonIndex = 0;
                                 }
                             } catch (compErr) {
-                                // 比价失败不阻断详情展示
+                                // 比價失敗不阻斷詳情展示
                             }
 
                             this.searched = true;
 
                         } else {
-                            this.error = infoRes.data.message || '查询详情失败';
+                            this.error = infoRes.data.message || '查詢詳情失敗';
                         }
 
                     } catch (err) {
-                        this.error = '获取详情失败，请检查网络';
+                        this.error = '獲取詳情失敗，請檢查網絡';
                     } finally {
                         this.loading = false;
                     }
                 },
 
-                // 获取地区列表
+                // 獲取地區列表
                 async getAreaList() {
                     this.areaListLoading = true;
                     try {
@@ -914,7 +914,7 @@
                     }
                 },
 
-                // 获取热门搜索
+                // 獲取熱門搜尋
                 async getPopularSearchWords() {
                     try {
                         const response = await axios.post('/app/getPopularSearchWordList', {});
@@ -932,7 +932,7 @@
                 },
 
                 onSearchInputFocus() {
-                    // 取消之前的 blur 定时器，防止弹窗被错误关闭
+                    // 取消之前的 blur 定時器，防止彈窗被錯誤關閉
                     if (this.blurTimeout) {
                         clearTimeout(this.blurTimeout);
                         this.blurTimeout = null;
