@@ -282,6 +282,11 @@ public class AppService {
         if (StrUtil.isBlank(priceStr)) {
             return new Money(areaEnum.getCurrencyCode(), BigDecimal.ZERO);
         }
+        if (priceStr.contains("juta")) {
+            priceStr = priceStr.replace("juta", "").replace(StrUtil.COMMA, StrUtil.DOT);
+            priceStr = ReUtil.get("\\d+(\\.\\d+)?", priceStr, 0);
+            return new Money(areaEnum.getCurrencyCode(), new BigDecimal(priceStr).multiply(BigDecimal.valueOf(1000000)).setScale(2, RoundingMode.HALF_UP));
+        }
         priceStr = priceStr.replace("ribu", "000");
         priceStr = priceStr.replace(areaEnum.getThousandsSeparator(), StrUtil.EMPTY);
         if (StrUtil.DOT.equals(areaEnum.getThousandsSeparator())) {
