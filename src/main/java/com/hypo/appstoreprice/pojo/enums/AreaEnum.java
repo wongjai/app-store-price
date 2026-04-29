@@ -44,6 +44,28 @@ public enum AreaEnum {
 
     PHILIPPINES("ph", "菲律賓", "₱", "PHP", StrUtil.COMMA, "In-App Purchases", "en-PH"),
 
+    COLOMBIA("co", "哥倫比亞", "$", "COP", StrUtil.DOT, "Compras dentro de la app", "es-CO"),
+
+    INDONESIA("id", "印尼", "Rp", "IDR", StrUtil.DOT, "In-App Purchases", "id-ID"),
+
+    VIETNAM("vn", "越南", "₫", "VND", StrUtil.DOT, "In-App Purchases", "vi-VN"),
+
+    MALAYSIA("my", "馬來西亞", "RM", "MYR", StrUtil.COMMA, "In-App Purchases", "ms-MY"),
+
+    THAILAND("th", "泰國", "฿", "THB", StrUtil.COMMA, "In-App Purchases", "th-TH"),
+
+    MEXICO("mx", "墨西哥", "$", "MXN", StrUtil.COMMA, "Compras dentro de la app", "es-MX"),
+
+    CHILE("cl", "智利", "$", "CLP", StrUtil.DOT, "Compras dentro de la app", "es-CL"),
+
+    KAZAKHSTAN("kz", "哈薩克斯坦", "₸", "KZT", StrUtil.COMMA, "In-App Purchases", "kk-KZ"),
+
+    CANADA("ca", "加拿大", "$", "CAD", StrUtil.COMMA, "In-App Purchases", "en-CA"),
+
+    SAUDI_ARABIA("sa", "沙特阿拉伯", "SAR", "SAR", StrUtil.COMMA, "In-App Purchases", "en-SA"),
+
+    UAE("ae", "阿聯酋", "AED", "AED", StrUtil.COMMA, "In-App Purchases", "en-AE"),
+
     ;
 
     /**

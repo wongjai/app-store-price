@@ -282,6 +282,7 @@ public class AppService {
         if (StrUtil.isBlank(priceStr)) {
             return new Money(areaEnum.getCurrencyCode(), BigDecimal.ZERO);
         }
+        priceStr = priceStr.replace("ribu", "000");
         priceStr = priceStr.replace(areaEnum.getThousandsSeparator(), StrUtil.EMPTY);
         if (StrUtil.DOT.equals(areaEnum.getThousandsSeparator())) {
             priceStr = priceStr.replace(StrUtil.COMMA, StrUtil.DOT);
