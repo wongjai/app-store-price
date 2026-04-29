@@ -42,6 +42,8 @@ public enum AreaEnum {
 
     EGYPT("eg", "埃及", "E£", "EGP", StrUtil.COMMA, "In-App Purchases", "ar-EG-u-nu-latn"),
 
+    PHILIPPINES("ph", "菲律賓", "₱", "PHP", StrUtil.COMMA, "In-App Purchases", "en-PH"),
+
     ;
 
     /**
